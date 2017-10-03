@@ -1,0 +1,12 @@
+{
+  "name": "image-filters",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2016": "^6.24.1",
+    "webpack": "^3.6.0"
+  }
+}
