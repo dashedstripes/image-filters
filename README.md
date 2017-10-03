@@ -29,3 +29,7 @@ After returning the new imageData, you will be able to render it to the canvas w
 ```javascript
 canvas.context.putImageData(newImageData, 0, 0)
 ```
+
+## Sources
+
+Based on information found in this article: http://lodev.org/cgtutor/filtering.html
