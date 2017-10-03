@@ -90,8 +90,8 @@ const image = new Image();
 image.onload = function () {
   canvas.context.drawImage(this, 0, 0);
   let imageData = canvas.context.getImageData(0, 0, width, height);
-  let filtered = filter.convolution(imageData, filter.sharpen);
-  canvas.context.putImageData(filtered, 0, 0);
+  let filtered = filter.outrun(imageData);
+  canvas.context.putImageData(imageData, 0, 0);
 };
 image.src = 'rose.jpg';
 
@@ -151,12 +151,15 @@ class ImageFilter {
 
   outrun(imageData) {
     let data = imageData.data;
+    let width = imageData.width;
+    let height = imageData.height;
 
-    for (let i = 0; i < data.length; i += 4) {
-      let avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-      data[i] += 10 % 255;
-      data[i + 1] += 50 % 255;
-      data[i + 2] += 100 % 255;
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
+        data[(y * width + x) * 4] += y / 3 % 255;
+        data[(y * width + x) * 4 + 1] += x / 3 % 255;
+        data[(y * width + x) * 4 + 2] += x / 3 % 255;
+      }
     }
 
     return imageData;

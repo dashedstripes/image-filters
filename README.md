@@ -30,6 +30,11 @@ After returning the new imageData, you will be able to render it to the canvas w
 canvas.context.putImageData(newImageData, 0, 0)
 ```
 
+## Examples
+
+Original
+![Original](./examples/original.jpg)
+
 ## Sources
 
 Based on information found in this article: http://lodev.org/cgtutor/filtering.html
