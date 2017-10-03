@@ -42,6 +42,10 @@ canvas.context.putImageData(newImageData, 0, 0)
 
 Shouts to r/outrun.
 
+### Motion Blur
+
+![Motion Blur](./examples/motion-blur.jpg)
+
 ## Sources
 
 Based on information found in this article: http://lodev.org/cgtutor/filtering.html
