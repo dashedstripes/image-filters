@@ -32,7 +32,8 @@ canvas.context.putImageData(newImageData, 0, 0)
 
 ## Examples
 
-####Original
+###Original
+
 ![Original](./examples/original.jpg)
 
 ## Sources
