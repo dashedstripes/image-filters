@@ -90,9 +90,10 @@ const image = new Image();
 image.onload = function () {
   canvas.context.drawImage(this, 0, 0);
   let imageData = canvas.context.getImageData(0, 0, width, height);
-  filter.grayscale(imageData);
-  filter.sepia(imageData);
-  filter.convolution(imageData, filter.gaussian);
+  filter.convolution(imageData, filter.emboss);
+  // filter.grayscale(imageData)
+  // filter.sepia(imageData)
+  // filter.convolution(imageData, filter.gaussian)
   canvas.context.putImageData(imageData, 0, 0);
 };
 image.src = 'rose.jpg';
@@ -125,6 +126,7 @@ class ImageFilter {
 
   constructor() {
     this.none = [0, 0, 0, 0, 1, 0, 0, 0, 0];
+
     this.sharpen = [-1, -1, -1, -1, 9, -1, -1, -1, -1];
 
     this.blur = [0, 0, 2, 0, 0, 0, 2, 2, 2, 0, 2, 2, 2, 2, 2, 0, 2, 2, 2, 0, 0, 0, 2, 0, 0];
@@ -132,10 +134,6 @@ class ImageFilter {
     this.gaussian = [2, 2, 2, 2, 2, 2, 2, 2, 5, 5, 5, 5, 5, 2, 2, 5, 7, 7, 7, 5, 2, 2, 5, 7, 12, 7, 5, 2, 2, 5, 7, 7, 7, 5, 2, 2, 5, 5, 5, 5, 5, 2, 2, 2, 2, 2, 2, 2, 2];
 
     this.motionBlur = [1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1];
-
-    this.edges = [-1, -1, -1, -1, 9, -1, -1, -1, -1];
-
-    this.emboss = [-1, -1, 0, -1, 0, 1, 0, 1, 1];
 
     this.mean = [1, 1, 1, 1, 1, 1, 1, 1, 1];
   }
