@@ -71,6 +71,30 @@ class ImageFilter {
     return imageData
   }
 
+  sepia(imageData) {
+    let data = imageData.data
+
+    for (let i = 0; i < data.length; i += 4) {
+      data[i] += 112 / 2 % 255
+      data[i + 1] += 66 / 2 % 255
+      data[i + 2] += 20 / 2 % 255
+    }
+
+    return imageData
+  }
+
+  polaroid(imageData) {
+    let data = imageData.data
+
+    for (let i = 0; i < data.length; i += 4) {
+      data[i] += 0 % 255
+      data[i + 1] += 66 % 255
+      data[i + 2] += 100 % 255
+    }
+
+    return imageData
+  }
+
   outrun(imageData) {
     let data = imageData.data
     let width = imageData.width

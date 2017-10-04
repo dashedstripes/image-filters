@@ -90,7 +90,9 @@ const image = new Image();
 image.onload = function () {
   canvas.context.drawImage(this, 0, 0);
   let imageData = canvas.context.getImageData(0, 0, width, height);
-  let filtered = filter.convolution(imageData, filter.motionBlur);
+  filter.grayscale(imageData);
+  filter.sepia(imageData);
+  filter.convolution(imageData, filter.gaussian);
   canvas.context.putImageData(imageData, 0, 0);
 };
 image.src = 'rose.jpg';
@@ -144,6 +146,30 @@ class ImageFilter {
       data[i] = avg;
       data[i + 1] = avg;
       data[i + 2] = avg;
+    }
+
+    return imageData;
+  }
+
+  sepia(imageData) {
+    let data = imageData.data;
+
+    for (let i = 0; i < data.length; i += 4) {
+      data[i] += 112 / 2 % 255;
+      data[i + 1] += 66 / 2 % 255;
+      data[i + 2] += 20 / 2 % 255;
+    }
+
+    return imageData;
+  }
+
+  polaroid(imageData) {
+    let data = imageData.data;
+
+    for (let i = 0; i < data.length; i += 4) {
+      data[i] += 0 % 255;
+      data[i + 1] += 66 % 255;
+      data[i + 2] += 100 % 255;
     }
 
     return imageData;
