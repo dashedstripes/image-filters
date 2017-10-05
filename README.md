@@ -32,6 +32,7 @@ canvas.context.putImageData(newImageData, 0, 0)
 
 ## Examples
 
+
 ### Original
 
 ![Original](./examples/original.jpg)
@@ -45,6 +46,10 @@ Shouts to r/outrun.
 ### Motion Blur
 
 ![Motion Blur](./examples/motion-blur.jpg)
+
+## Grayscale, Sepia, and Gaussian
+
+![Grayscale, Sepia, and Gaussian](./examples/grayscale-sepia-gaussian.jpg)
 
 ## Sources
 

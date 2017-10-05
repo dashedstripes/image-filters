@@ -12,7 +12,7 @@ image.onload = function () {
   let imageData = canvas.context.getImageData(0, 0, width, height)
   filter.grayscale(imageData)
   filter.sepia(imageData)
-  filter.convolution(imageData, filter.gaussian)
+  filter.convolution(imageData, filter.motionBlur)
   canvas.context.putImageData(imageData, 0, 0)
 }
 image.src = 'rose.jpg'
