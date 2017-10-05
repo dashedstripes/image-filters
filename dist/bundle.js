@@ -81,8 +81,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-const width = 640;
-const height = 480;
+const width = 450;
+const height = 450;
 const canvas = new __WEBPACK_IMPORTED_MODULE_0__Canvas__["a" /* default */](width, height);
 const filter = new __WEBPACK_IMPORTED_MODULE_1__ImageFilter__["a" /* default */]();
 const image = new Image();
@@ -209,15 +209,17 @@ class ImageFilter {
             let ix = (x - Math.floor(fl / 2) + fx + width) % width; // ImageX
             let iy = (y - Math.floor(fl / 2) + fy + height) % height; // ImageY
 
-            r += data[(iy * width + ix) * 4] * filter[fy * fl + fx] / tv;
-            g += data[(iy * width + ix) * 4 + 1] * filter[fy * fl + fx] / tv;
-            b += data[(iy * width + ix) * 4 + 2] * filter[fy * fl + fx] / tv;
+            r += data[(iy * width + ix) * 4] * (filter[fy * fl + fx] / tv);
+            g += data[(iy * width + ix) * 4 + 1] * (filter[fy * fl + fx] / tv);
+            b += data[(iy * width + ix) * 4 + 2] * (filter[fy * fl + fx] / tv);
           }
         }
 
-        data[(y * width + x) * 4] = r;
-        data[(y * width + x) * 4 + 1] = g;
-        data[(y * width + x) * 4 + 2] = b;
+        if (x > fl / 2 && y > fl / 2 && x < width - fl / 2 && y < height - fl / 2) {
+          data[(y * width + x) * 4] = r;
+          data[(y * width + x) * 4 + 1] = g;
+          data[(y * width + x) * 4 + 2] = b;
+        }
       }
     }
 

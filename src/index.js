@@ -1,8 +1,8 @@
 import Canvas from './Canvas'
 import ImageFilter from './ImageFilter'
 
-const width = 640
-const height = 480
+const width = 450
+const height = 450
 const canvas = new Canvas(width, height)
 const filter = new ImageFilter()
 const image = new Image()
